@@ -1,9 +1,18 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { IToDoItemType } from '../../types/toDoList';
 
 const ToDoSearch: React.FC = () => {
+  const dispatch = useDispatch();
+  const [value, setValue] = useState<string>('');
+  const handleQuery = (event: React.ChangeEvent<HTMLInputElement>): void => {
+    const querySearch = event.target.value;
+    setValue(querySearch);
+    dispatch({ type: IToDoItemType.SEARCH, payload: { name: querySearch } });
+  };
   return (
     <div className="to-do-search">
-      <input type="search" placeholder="search todo" />
+      <input value={value} type="search" onChange={handleQuery} placeholder="search todo" />
     </div>
   );
 };

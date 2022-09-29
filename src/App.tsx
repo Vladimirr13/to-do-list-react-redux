@@ -3,7 +3,7 @@ import ToDoSearch from './components/toDoSearch';
 import ToDoList from './components/toDoList';
 import ToDoAddNew from './components/toDoAddNew';
 
-function App() {
+const App: React.FC = () => {
   return (
     <div className="main-container">
       <h1>Todo List</h1>
@@ -12,6 +12,6 @@ function App() {
       <ToDoAddNew />
     </div>
   );
-}
+};
 
 export default App;
