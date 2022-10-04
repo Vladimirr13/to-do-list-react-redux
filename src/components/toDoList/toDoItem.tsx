@@ -1,6 +1,10 @@
 import React, { useState } from 'react';
 import { IToDoItem, IToDoItemType } from '../../types/toDoList';
 import { useDispatch } from 'react-redux';
+import iconDelete from '../../assets/icon/delete.svg';
+import iconEdit from '../../assets/icon/pencil.svg';
+import iconCheck from '../../assets/icon/check.svg';
+import iconChecking from '../../assets/icon/checking.svg';
 interface IToDoItemProps {
   todo: IToDoItem;
 }
@@ -51,9 +55,19 @@ const ToDoItem: React.FC<IToDoItemProps> = ({ todo }) => {
         </div>
       )}
       <div className="to-do-item__tools">
-        <div onClick={() => handleSetMode('delete', todo.id)}>Delete</div>
-        <div onClick={() => handleSetMode('edit')}>Edit</div>
-        <div onClick={() => handleSetMode('check', todo.id)}>Check</div>
+        <div onClick={() => handleSetMode('delete', todo.id)}>
+          <img src={iconDelete} alt="delete" />
+        </div>
+        <div onClick={() => handleSetMode('edit')}>
+          <img src={iconEdit} alt="edit" />
+        </div>
+        <div onClick={() => handleSetMode('check', todo.id)}>
+          {todo.check ? (
+            <img src={iconChecking} alt="check" />
+          ) : (
+            <img src={iconCheck} alt="check" />
+          )}
+        </div>
       </div>
     </div>
   );
